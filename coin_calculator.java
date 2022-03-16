@@ -1,13 +1,14 @@
-import java.util.Scanner;
-
 /*
-Filename: Q3.java
+Filename: coin_calculator
 Filetype: Java file
 Author: Michael Salton
 Created on: 02/15/22
 Description: calculate the minimum number of coins needed to make a certain amount of chance
 */
-public class Q3{
+
+import java.util.Scanner;
+
+public class coinc_calculator{
     
     public static int change_calculator(int v, int[] coins){
 
@@ -39,15 +40,6 @@ public class Q3{
 
     public static void main (String[] args){
 
-        // ******************* TEST CASES **********************
-
-        int[] coinsTest = {25, 10, 5};
-        int vTest = 30;
-
-        System.out.print("Minimum "+change_calculator(vTest, coinsTest)+" coins required\n");
-
-        // *****************************************************
-
         Scanner scan = new Scanner(System.in);
 
         System.out.println("How many different types of coins: ");
@@ -65,9 +57,6 @@ public class Q3{
 
         System.out.print("Minimum "+change_calculator(v, coins)+" coins required\n");
 
-        scan.close();
-
-        
-        
+        scan.close();    
     }  
 }
