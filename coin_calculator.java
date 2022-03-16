@@ -1,0 +1,73 @@
+import java.util.Scanner;
+
+/*
+Filename: Q3.java
+Filetype: Java file
+Author: Michael Salton
+Created on: 02/15/22
+Description: calculate the minimum number of coins needed to make a certain amount of chance
+*/
+public class Q3{
+    
+    public static int change_calculator(int v, int[] coins){
+
+        int remaining = v;
+        int coins_required = 0;
+        int i = 0;
+        int[] coin_count = new int[coins.length];
+
+        while(remaining != 0){
+            if(coins[i] == remaining){
+                coin_count[i]++;
+                return coins_required+1;
+            }
+            if(coins[i] < remaining){
+                coin_count[i]++;
+                remaining -= coins[i];
+                coins_required++;
+            }
+            if(coins[i] > remaining && i+1 < coins.length){
+                coin_count[i]++;
+                i++;
+            }
+            else{
+                return -1;
+            } 
+        }
+        return coins_required; 
+    }
+
+    public static void main (String[] args){
+
+        // ******************* TEST CASES **********************
+
+        int[] coinsTest = {25, 10, 5};
+        int vTest = 30;
+
+        System.out.print("Minimum "+change_calculator(vTest, coinsTest)+" coins required\n");
+
+        // *****************************************************
+
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("How many different types of coins: ");
+        int numOfUniqueCoins = scan.nextInt();
+
+        int[] coins = new int[numOfUniqueCoins];
+
+        for(int i = 0; i < numOfUniqueCoins; i++){
+            System.out.println("Value of coin "+ i+1 +": ");
+            coins[i] = scan.nextInt();
+        }
+
+        System.out.println("How many cents do you want to make cents for: ");
+        int v = scan.nextInt();
+
+        System.out.print("Minimum "+change_calculator(v, coins)+" coins required\n");
+
+        scan.close();
+
+        
+        
+    }  
+}
